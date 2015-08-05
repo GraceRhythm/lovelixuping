@@ -1,11 +1,83 @@
----
-layout: default
-title: �ҵ�Blog
----
-<h2>{{ page.title }}</h2>
-<p>��������</p>
-<ul>
-{% for post in site.posts %}
-<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Happy Birthday To You </title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+</head>
+
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code" >
+			　　对你的思恋就像一颗种子，在我心底发芽，长成参天大树,树根牢牢的抓住我心底的每一个角落;<br />
+			　　对你的爱犹如那茫茫的沧海，充斥着我大脑中的每一个细胞。<br />
+			<p></p>
+				
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						From 2004 to 2015 and My love will to be continued to forever 
+					</div>
+					<div id="loveu">
+						Love you forever and ever.<br/>
+						<div class="signature">- 李春峰</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+		</div>
+	</div>
+	<audio preload="auto" id="music" loop="loop">
+        <source src="music/一生有你.mp3" type="audio/mpeg" />
+    </audio>
+	
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2010, 10, 2);
+		together.setHours(20);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		var music =  document.getElementById("music");
+
+        music.play();
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+</body>
+</html>
